@@ -1,12 +1,25 @@
 # 1. dockerコンテナの起動
 
+## 1. runコマンドの場合
 ```
 docker container run -itd  \
--p 5555:5432 -p 8888:80 -p 2222:22 \
+-p 5555:5432 \
+-p 8888:80 \
+-p 2222:22 \
 --privileged \
 --mount type=bind,src=/c/Users/wire-drawing/pgsql/,dst=/var/www/html/pgsql  \
---name pgsql centos \
-/sbin/init
+--name pgsql centos //sbin/init
+
+```
+## 2. createコマンドの場合
+```
+docker container create --name pgsql \
+--privileged  \
+-p 5555:5432 \
+-p 2222:22 \
+-p 8888:80 \
+--mount type=bind,src=/c/Users/wire-drawing/pgsql/,dst=/var/www/html/pgsql  \
+centos:latest //sbin/init
 
 ```
 
@@ -24,11 +37,12 @@ postgresqlのクラスタの初期化ができないため以下のモジュー�
 
 (※https://teratail.com/questions/223775)
 
+## centos8の場合
 ```
-# centos8 ->
 dnf -y install glibc-langpack-ja
-
-#centos7 ->
+```
+## centos7の場合
+```
 yum -y install glibc-langpack-ja
 ```
 
@@ -48,6 +62,7 @@ dnf -y install postgresql-contrib
 
 # 7. postgresqlサーバークラスターの初期化
 postgresql-setup --initdb
+
 ※以下のような文面が表示されればOK
 
 ```
