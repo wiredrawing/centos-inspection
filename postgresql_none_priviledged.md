@@ -41,8 +41,9 @@ yum -y install glibc-langpack-ja
 
 
 # 5. postgresql-serverのインストール
+```
 dnf -y install postgresql-server
-
+```
 
 # 6. LANG環境変数を設定する
 
