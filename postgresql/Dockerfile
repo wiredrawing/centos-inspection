@@ -16,6 +16,11 @@ export LANG && \
 initdb -D /var/lib/pgsql/data && \
 cd /var/lib/pgsql/data
 
+RUN echo 'host all all all md5' >> /var/lib/pgsql/data/pg_hba.conf
+RUN echo "listen_addresses  '*'" >> /var/lib/pgsql/data/postgresql.conf
+RUN echo "port 5432" >> /var/lib/pgsql/data/postgresql.conf
+
 EXPOSE 5432
 
+# PID(プロセスID==1で動作するコマンドを記述)
 CMD ["postgres", "-D", "/var/lib/pgsql/data"]
