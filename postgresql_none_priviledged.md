@@ -60,6 +60,9 @@ su postgres
 LANG=ja_JP.utf8
 export LANG
 
+echo $LANG
+
+# => ja_JP.utf8 が出力されればOk
 ```
 
 # 7. postgresユーザーでpostgresqlサーバーの初期化
