@@ -12,6 +12,11 @@ RUN apt -y install postgresql \
 postgresql-contrib \
 vim
 
+
+# 外部ホストからのアクセスを一旦すべて許可する
+RUN echo "listen_addresses = '*'" >> /etc/postgresql/12/main/postgresql.conf
+RUN echo 'host all all all md5' >> /etc/postgresql/12/main/pg_hba.conf
+
 USER postgres
 
 EXPOSE 5432
