@@ -7,6 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # nodejsのインストール
 RUN apt -y update && \
 apt -y install nodejs \
+curl \
 npm
 
 # DEBIAN_FRONTENDをデフォルト値に戻す
