@@ -12,21 +12,19 @@ apt -y install g++ make ruby ruby-dev vim nodejs npm libpq-dev
 RUN npm install -g yarn
 
 # アプリケーションディレクトリ
-WORKDIR /var/www/html
+WORKDIR /var/www/pre
 
 # railsパッケージのインストール
 RUN gem install bundler
 RUN gem install rails
-RUN rails new app -d postgresql
 
-WORKDIR /var/www/html/app
-RUN rails webpacker:install
+WORKDIR /var/www/pre/app
 
 EXPOSE 3000
-RUN echo pwd
 # 環境変数をデフォルトに戻す
 ARG DEBIAN_FRONTEND=newt
 
-# デフォルトではフォアグラウンドで実行される
-#CMD ["tail", "-f"]
-CMD [ "rails", "s", "--binding=0.0.0.0"]
+WORKDIR /var/www/html
+
+# railsの起動は､コンテナ内で起動
+CMD ["tail", "-f"]
