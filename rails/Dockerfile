@@ -5,6 +5,8 @@ FROM ubuntu:20.04
 # 無視するため下記を追加
 ARG DEBIAN_FRONTEND=noninteractive
 
+# 時間の設定
+ENV TZ='Asia/Tokyo'
 RUN apt -y update && \
 apt -y install g++ make ruby ruby-dev vim nodejs npm libpq-dev
 
