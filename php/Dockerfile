@@ -6,6 +6,7 @@ FROM alpine
 RUN apk update && \
 apk add php php-mysqlnd php-mysqli php-pgsql php-pdo php-sockets php-fpm php-apache2 php-gd php-fpm \
 php7-mbstring \
+php7-imagick \
 php7-exif \
 php7-json \
 php7-session \
